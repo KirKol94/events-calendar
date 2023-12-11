@@ -2,10 +2,9 @@ import { Container } from "@/components/container";
 import { EventsFilter } from "@/components/eventsFilter";
 import { useEventsStore } from "@/store/events.store";
 import { useEventsFilterStore } from "@/store/eventsFilter.store";
-import { dateConverter } from "@/utils/dateConverter";
 import { useEffect } from "react";
 
-export const EventsPage = () => {
+const EventsPage = () => {
   const searchValue = useEventsFilterStore((state) => state.searchValue);
   const events = useEventsStore((state) =>
     state.events.filter((e) =>
@@ -85,3 +84,5 @@ export const EventsPage = () => {
     </>
   );
 };
+
+export default EventsPage;
