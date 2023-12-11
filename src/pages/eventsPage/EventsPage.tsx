@@ -47,7 +47,7 @@ const EventsPage = () => {
               {events.map((event, index) => (
                 <tr key={index}>
                   <td className="px-4 py-2">
-                    <span className="p-2 bg-red-500">
+                    <span className="p-2 bg-red-500 rounded text-white">
                       {`${event.date_start.split("/")[1]}-${
                         event.date_end !== event.date_start &&
                         event.date_end?.split("/")[1]
