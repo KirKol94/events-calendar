@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ReactNode } from "react";
 
 interface PropsContainer {
@@ -5,8 +6,8 @@ interface PropsContainer {
   className?: string;
 }
 
-export const Container = ({ children, className }: PropsContainer) => {
-  return (
-    <div className={`max-w-[930px] mx-auto px-4 ${className}`}>{children}</div>
-  );
+export const Container = ({ children, className = "" }: PropsContainer) => {
+  const combinedClasses = clsx("max-w-[930px] mx-auto px-4", className);
+
+  return <div className={combinedClasses}>{children}</div>;
 };
