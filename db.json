@@ -1,0 +1,94 @@
+{
+  "events": [
+    {
+      "title": "Istanbul Blockchain Week",
+      "date_start": "11/15/2023",
+      "date_end": "11/20/2023",
+      "location": "Istanbul, Turkey",
+      "description": "A week-long summit featuring global blockchain experts.",
+      "url": "www.ibweek2023.com",
+      "ticket_price": "$500"
+    },
+    {
+      "title": "Virtual Crypto Innovation Fair",
+      "date_start": "02/10/2024",
+      "date_end": "02/12/2024",
+      "location": "Online",
+      "description": "An online showcase of the latest in crypto tech and startups.",
+      "url": "www.vcifair.com",
+      "ticket_price": "$100"
+    },
+    {
+      "title": "Crypto Cruise Caribbean",
+      "date_start": "03/05/2024",
+      "date_end": "03/12/2024",
+      "location": "Caribbean Sea",
+      "description": "A luxury cruise offering crypto workshops and networking.",
+      "url": "www.cryptocruise.com",
+      "ticket_price": "$3,000"
+    },
+    {
+      "title": "NFT NYC Expo",
+      "date_start": "05/20/2023",
+      "date_end": "05/22/2023",
+      "location": "New York City, USA",
+      "description": "An expo dedicated to NFT art and technology.",
+      "url": "www.nftnycexpo.com",
+      "ticket_price": "$400"
+    },
+    {
+      "title": "Satoshi's Summit",
+      "date_start": "08/15/2023",
+      "date_end": "08/17/2023",
+      "location": "Tokyo, Japan",
+      "description": "A conference focusing on Bitcoin's future and technology.",
+      "url": "www.satoshi-summit.com",
+      "ticket_price": "$600"
+    },
+    {
+      "title": "Arctic Blockchain Retreat",
+      "date_start": "09/01/2024",
+      "date_end": "09/05/2024",
+      "location": "Reykjavik, Iceland",
+      "description": "A unique retreat focusing on sustainable crypto mining.",
+      "url": "www.arcticblockchain.is",
+      "ticket_price": ""
+    },
+    {
+      "title": "Mars Crypto Conference",
+      "date_start": "11/12/2024",
+      "date_end": "11/15/2024",
+      "location": "Virtual Mars Habitat",
+      "description": "A virtual conference simulating a Mars habitat, discussing interplanetary crypto.",
+      "url": "www.marscryptoconf.com",
+      "ticket_price": ""
+    },
+    {
+      "title": "Decentralized Finance Forum",
+      "date_start": "01/20/2025",
+      "date_end": "01/22/2025",
+      "location": "London, UK",
+      "description": "A forum for leaders in decentralized finance.",
+      "url": "www.defiforum.co.uk",
+      "ticket_price": "$450"
+    },
+    {
+      "title": "Blockchain in Space Symposium",
+      "date_start": "07/04/2023",
+      "date_end": "07/06/2023",
+      "location": "Houston, USA",
+      "description": "Exploring the potential of blockchain technology in space missions.",
+      "url": "www.binspace2023.com",
+      "ticket_price": "$750"
+    },
+    {
+      "title": "Crypto Fest Rio",
+      "date_start": "12/10/2023",
+      "date_end": "12/12/2023",
+      "location": "Rio de Janeiro, Brazil",
+      "description": "A festival celebrating cryptocurrency in Latin America.",
+      "url": "www.cryptofestrio.br",
+      "ticket_price": "$250"
+    }
+  ]
+}
