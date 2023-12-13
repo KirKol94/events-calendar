@@ -1,6 +1,6 @@
 # Events calendar app [ссылка](https://e-calendar.netlify.app/)
 
-![Изображение](./screen.png "Скриншот приложения")
+![Изображение](./screenshot.png "Скриншот приложения")
 
 ## Установка и запуск проекта
 
