@@ -81,7 +81,7 @@ const EventsPage = () => {
                   <td className="px-4 py-2">
                     <span
                       className={clsx(
-                        "p-2 rounded text-white whitespace-nowrap",
+                        "p-2 inline-block w-[80px] text-center rounded text-white whitespace-nowrap",
                         new Date(event.date_start) < new Date() &&
                           new Date(event.date_start).getMonth() !==
                             new Date().getMonth() &&
