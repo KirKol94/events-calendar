@@ -1,7 +1,7 @@
 export interface IEvent {
   title: string;
-  date_start: string;
-  date_end: string | null;
+  date_start: string | number;
+  date_end: string | number | null;
   location: string;
   description: string;
   url: string;

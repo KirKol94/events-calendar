@@ -1,32 +1,57 @@
 import { Container } from "@/components/container";
 import { EventsFilter } from "@/components/eventsFilter";
+import { Loader } from "@/components/loader";
+import { Modal } from "@/components/modal";
 import { useEventsStore } from "@/store/events.store";
 import { useEventsFilterStore } from "@/store/eventsFilter.store";
-import { dateConverter } from "@/utils/dateConverter";
-import { useEffect } from "react";
+import { IEvent } from "@/types/IEvent";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
 
 const EventsPage = () => {
   const searchValue = useEventsFilterStore((state) => state.searchValue);
+  const selectedLocation = useEventsFilterStore(
+    (state) => state.selectedLocation
+  );
   const events = useEventsStore((state) =>
     state.events
       .filter((e) =>
         e.title.toLocaleLowerCase().includes(searchValue.toLowerCase())
       )
-      .sort(
-        (a, b) =>
-          +new Date(dateConverter(a.date_start)) -
-          +new Date(dateConverter(b.date_start))
-      )
+      .filter((e) => e.location.includes(selectedLocation))
+      .sort((a, b) => +a.date_start - +b.date_start)
   );
   const isLoading = useEventsStore((state) => state.isLoading);
   const fetchEvents = useEventsStore((state) => state.fetchEvents);
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentEvent, setCurrentEvent] = useState<IEvent | null>(null);
+  const showDetails = (event: IEvent) => {
+    setIsOpen(true);
+    setCurrentEvent(event);
+  };
 
   useEffect(() => {
     fetchEvents();
   }, [fetchEvents]);
 
   if (isLoading) {
-    return " Loading...";
+    return <Loader />;
   }
 
   return (
@@ -45,17 +70,31 @@ const EventsPage = () => {
             </thead>
             <tbody>
               {events.map((event, index) => (
-                <tr key={index}>
+                <tr
+                  key={index}
+                  className="cursor-pointer hover:bg-gray-100 even:bg-gray-200"
+                  onClick={() => showDetails(event)}
+                >
                   <td className="px-4 py-2">
-                    <span className="p-2 bg-red-500 rounded text-white">
-                      {`${event.date_start.split("/")[1]}-${
-                        event.date_end !== event.date_start &&
-                        event.date_end?.split("/")[1]
-                      }`}
+                    <span
+                      className={clsx(
+                        "p-2 bg-green-600 rounded text-white",
+                        new Date(event.date_start) < new Date() &&
+                          new Date(event.date_start).getMonth() !==
+                            new Date().getMonth() &&
+                          "bg-gray-300 line-through",
+                        new Date(event.date_start).getMonth() ===
+                          new Date().getMonth() && "bg-blue-600"
+                      )}
+                    >
+                      {`${new Date(event.date_start).getDate()}
+                      -
+                      ${event.date_end && new Date(event.date_end).getDate()}`}
                     </span>
-                    {new Date(dateConverter(event.date_start)).getMonth() + 1}
-                    {"-"}
-                    {new Date(dateConverter(event.date_start)).getFullYear()}
+                    <span className="p-2">
+                      {monthNames[new Date(event.date_start).getMonth()]}
+                      {new Date(event.date_start).getFullYear()}
+                    </span>
                   </td>
                   <td className="px-4 py-2">{event.title}</td>
                   <td className="px-4 py-2">{event.location}</td>
@@ -65,6 +104,47 @@ const EventsPage = () => {
           </table>
         </div>
       </Container>
+
+      <Modal
+        title={currentEvent?.title || "Event name"}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
+        {currentEvent && (
+          <div>
+            <p className="text-gray-600 mb-2">
+              <b>Date:</b>
+              {`${new Date(currentEvent.date_start).getDate()} ${
+                monthNames[new Date(currentEvent.date_start).getMonth()]
+              } - ${
+                currentEvent.date_end &&
+                `${new Date(currentEvent.date_end).getDate()} ${
+                  monthNames[new Date(currentEvent.date_end).getMonth()]
+                } ${new Date(currentEvent.date_end).getFullYear()}`
+              }`}
+            </p>
+            <p className="text-gray-600 mb-2">
+              <b>Location:</b> {currentEvent.location}
+            </p>
+            <p className="text-gray-600 mb-2">
+              <b>Description:</b> {currentEvent.description}
+            </p>
+            <p className="text-gray-600 mb-2">
+              <b>URL:</b>{" "}
+              <a
+                target="_blank"
+                href={"http://" + currentEvent.url}
+                className="text-blue-500 hover:underline"
+              >
+                {currentEvent.url}
+              </a>
+            </p>
+            <p className="text-gray-600 mb-2">
+              <b>Ticket Price:</b> {currentEvent.ticket_price}
+            </p>
+          </div>
+        )}
+      </Modal>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { Header } from "@/components/header";
+import { Loader } from "@/components/loader";
 import { lazy } from "react";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -14,7 +15,7 @@ export const App = () => {
         <Route
           index
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader />}>
               <EventsPage />
             </Suspense>
           }
