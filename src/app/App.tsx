@@ -1,5 +1,6 @@
 import { Header } from "@/components/header";
 import { Loader } from "@/components/loader";
+import { NotFoundPage } from "@/pages/notFountPage";
 import { lazy } from "react";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -20,6 +21,7 @@ export const App = () => {
             </Suspense>
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
