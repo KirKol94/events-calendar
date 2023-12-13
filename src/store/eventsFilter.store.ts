@@ -12,8 +12,8 @@ interface IUseEventsFilterStore {
 
 export const useEventsFilterStore = create<IUseEventsFilterStore>((set) => ({
   searchValue: "",
-  locations: [""],
-  selectedLocation: "",
+  locations: ["all"],
+  selectedLocation: "all",
 
   setSearchValue: (value) => set(() => ({ searchValue: value })),
 

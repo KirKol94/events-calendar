@@ -18,7 +18,10 @@ const EventsPage = () => {
       .filter((e) =>
         e.title.toLocaleLowerCase().includes(searchValue.toLowerCase())
       )
-      .filter((e) => e.location.includes(selectedLocation))
+      .filter((e) => {
+        if (selectedLocation === "all") return e;
+        else return e.location.includes(selectedLocation);
+      })
       .sort((a, b) => +a.date_start - +b.date_start)
   );
   const isLoading = useEventsStore((state) => state.isLoading);

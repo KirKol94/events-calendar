@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import classes from "./Modal.module.scss";
 import { useModal } from "./useModal";
 
 interface ModalProps {
@@ -26,24 +25,27 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
 
   return isOpen
     ? ReactDOM.createPortal(
-        <div className={classes.overlay} onClick={onClose}>
+        <div
+          onClick={onClose}
+          className="fixed top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 flex justify-center items-center"
+        >
           <div
-            className={classes.modal}
+            className="bg-white p-8 rounded-lg shadow-md w-2/3 max-w-[600px] opacity ease-in-out delay-450"
             onClick={handleModalClick}
             onKeyDown={handleModalKeyDown}
             tabIndex={1}
           >
-            <div className={classes.header}>
+            <div className="flex justify-between items-center border-black pb-4 mb-4">
               <h2>{title}</h2>
               <button
                 ref={closeButtonRef}
-                className={classes.close}
+                className="text-red-500 text-3xl transition-all duration-300 hover:text-red-700"
                 onClick={onClose}
               >
                 &times;
               </button>
             </div>
-            <div className={classes.content}>{children}</div>
+            <div>{children}</div>
           </div>
         </div>,
         modalElement
