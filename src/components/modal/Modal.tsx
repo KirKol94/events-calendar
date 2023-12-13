@@ -30,7 +30,7 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
           className="fixed top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 flex justify-center items-center"
         >
           <div
-            className="bg-white p-8 rounded-lg shadow-md w-2/3 max-w-[600px] opacity ease-in-out delay-450"
+            className="bg-white rounded-lg shadow-md max-w-[600px] opacity ease-in-out delay-450 xs:p-2 xs:w-5/6 md:p-6 lg:p-8"
             onClick={handleModalClick}
             onKeyDown={handleModalKeyDown}
             tabIndex={1}

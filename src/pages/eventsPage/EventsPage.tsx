@@ -81,11 +81,15 @@ const EventsPage = () => {
                   <td className="px-4 py-2">
                     <span
                       className={clsx(
-                        "p-2 bg-green-600 rounded text-white",
+                        "p-2 rounded text-white whitespace-nowrap",
                         new Date(event.date_start) < new Date() &&
                           new Date(event.date_start).getMonth() !==
                             new Date().getMonth() &&
                           "bg-gray-300 line-through",
+                        new Date(event.date_start) > new Date() &&
+                          new Date(event.date_start).getMonth() !==
+                            new Date().getMonth() &&
+                          "bg-green-600",
                         new Date(event.date_start).getMonth() ===
                           new Date().getMonth() && "bg-blue-600"
                       )}
@@ -99,7 +103,7 @@ const EventsPage = () => {
                       {new Date(event.date_start).getFullYear()}
                     </span>
                   </td>
-                  <td className="px-4 py-2">{event.title}</td>
+                  <td className="min-w-3/4 px-4 py-2">{event.title}</td>
                   <td className="px-4 py-2">{event.location}</td>
                 </tr>
               ))}

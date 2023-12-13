@@ -18,9 +18,9 @@ export const EventsFilter = () => {
   }, [setLocations, events]);
 
   return (
-    <Container className="py-4 flex items-center justify-between">
+    <Container className="py-4 flex items-center justify-between flex-wrap">
       <input
-        className="px-4 py-2"
+        className="px-4 py-2 flex-1"
         placeholder="Search by title"
         type="search"
         value={searchValue}
@@ -30,7 +30,7 @@ export const EventsFilter = () => {
       <div>
         <label htmlFor="dropdown">Filter by location:</label>
         <select
-          className="p-2"
+          className="p-2 flex-1"
           id="dropdown"
           onChange={(e) => setSelectedLocation(e.target.value)}
         >
